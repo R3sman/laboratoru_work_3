@@ -7,7 +7,7 @@
 #include <time.h>
 #include "stack.h"
 #include "sort.h"
-#include "file_operations.h"
+#include "operations.h"
 
 #define MAX_INPUT_SIZE 1000
 #define PREVIOUS_RUN_FILE "previous_run.txt"
