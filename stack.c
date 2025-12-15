@@ -3,7 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "stack.h"
+#include "sort.h"
+#include "operations.h"
 
 Stack* create_stack() {
     Stack* stack = (Stack*)malloc(sizeof(Stack));
