@@ -1,8 +1,8 @@
 
 
 
-#ifndef FILE_OPERATIONS_H
-#define FILE_OPERATIONS_H
+#ifndef OPERATIONS_H
+#define OPERATIONS_H
 
 int* read_array_from_file(const char* filename, int* n);
 void write_array_to_file(const char* filename, int* arr, int n);
