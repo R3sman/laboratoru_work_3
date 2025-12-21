@@ -7,6 +7,8 @@ TARGET = sorting_program
 SRC_DIR = src
 OBJ_DIR = obj
 
+.PHONY: all clean run test
+
 SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/stack.c $(SRC_DIR)/sort.c $(SRC_DIR)/file_operations.c
 OBJS = $(OBJ_DIR)/main.o $(OBJ_DIR)/stack.o $(OBJ_DIR)/sort.o $(OBJ_DIR)/file_operations.o
 
@@ -27,5 +29,3 @@ run: $(TARGET)
 
 test:
 	./$(TARGET) --file previous_run.txt
-
-.PHONY: all clean run test
