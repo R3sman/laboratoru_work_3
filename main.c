@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <setlocale.h>
+//#include <setlocale.h>
 #include "stack.h"
 #include "sort.h"
 #include "operations.h"
