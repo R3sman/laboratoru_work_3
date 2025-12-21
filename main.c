@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <setlocale>
 #include "stack.h"
 #include "sort.h"
 #include "operations.h"
@@ -113,6 +114,7 @@ void compare_sorting_methods() {
 }
 
 int main(int argc, char* argv[]) {
+    setlocale(LC_ALL, "rus");
     // Обработка аргумента командной строки --file
     if (argc == 3 && strcmp(argv[1], "--file") == 0) {
         int n;
