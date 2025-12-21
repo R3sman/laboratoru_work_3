@@ -1,31 +1,69 @@
+########################################################################
+####################### Makefile Template ##############################
+########################################################################
 
-
-
+# Compiler settings - Can be customized.
 CC = gcc
-CFLAGS = -Wall -Wextra -I./include
-TARGET = sorting_program
-SRC_DIR = src
-OBJ_DIR = obj
+CXXFLAGS = -std=c11 -Wall
+LDFLAGS = 
 
-.PHONY: all clean run test
+# Makefile settings - Can be customized.
+APPNAME = myapp
+EXT = .c
+SRCDIR = src
+OBJDIR = obj
 
-SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/stack.c $(SRC_DIR)/sort.c $(SRC_DIR)/file_operations.c
-OBJS = $(OBJ_DIR)/main.o $(OBJ_DIR)/stack.o $(OBJ_DIR)/sort.o $(OBJ_DIR)/file_operations.o
+############## Do not change anything from here downwards! #############
+SRC = $(wildcard $(SRCDIR)/*$(EXT))
+OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
+DEP = $(OBJ:$(OBJDIR)/%.o=%.d)
+# UNIX-based OS variables & settings
+RM = rm
+DELOBJ = $(OBJ)
+# Windows OS variables & settings
+DEL = del
+EXE = .exe
+WDELOBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)\\%.o)
 
-all: $(TARGET)
+########################################################################
+####################### Targets beginning here #########################
+########################################################################
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+all: $(APPNAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+# Builds the app
+$(APPNAME): $(OBJ)
+	$(CC) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
+# Creates the dependecy rules
+%.d: $(SRCDIR)/%$(EXT)
+	@$(CPP) $(CFLAGS) $< -MM -MT $(@:%.d=$(OBJDIR)/%.o) >$@
+
+# Includes all .h files
+-include $(DEP)
+
+# Building rule for .o files and its .c/.cpp in combination with all .h
+$(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
+	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+################### Cleaning rules for Unix-based OS ###################
+# Cleans complete project
+.PHONY: clean
 clean:
-	rm -rf $(OBJ_DIR) $(TARGET) previous_run.txt sorted_array.txt sorted_from_file.txt
+	$(RM) $(DELOBJ) $(DEP) $(APPNAME)
 
-run: $(TARGET)
-	./$(TARGET)
+# Cleans only all files with the extension .d
+.PHONY: cleandep
+cleandep:
+	$(RM) $(DEP)
 
-test:
-	./$(TARGET) --file previous_run.txt
+#################### Cleaning rules for Windows OS #####################
+# Cleans complete project
+.PHONY: cleanw
+cleanw:
+	$(DEL) $(WDELOBJ) $(DEP) $(APPNAME)$(EXE)
+
+# Cleans only all files with the extension .d
+.PHONY: cleandepw
+cleandepw:
+	$(DEL) $(DEP)
