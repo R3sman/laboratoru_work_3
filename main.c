@@ -14,7 +14,7 @@
 #define PREVIOUS_RUN_FILE "previous_run.txt"
 
 void print_menu() {
-    printf("1. Ввести числа с клавиатуры\n");
+    printf("1. Input number from klav.\n");
     printf("2. Считать числа из файла\n");
     printf("3. Сгенерировать тестовые файлы\n");
     printf("4. Сравнить методы сортировки\n");
