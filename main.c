@@ -14,12 +14,11 @@
 #define PREVIOUS_RUN_FILE "previous_run.txt"
 
 void print_menu() {
-    printf("1. Input number from klav.\n");
-    printf("2. Считать числа из файла\n");
-    printf("3. Сгенерировать тестовые файлы\n");
-    printf("4. Сравнить методы сортировки\n");
-    printf("5. Выход\n");
-    printf("Выберите опцию: ");
+    printf("1. Enter numbers from the keyboard\n");
+    printf("2. Take numbers from a file\n");
+    printf("3. Generate test files\n");
+    printf("4. Compare sorting methods\n");
+    printf("5. End the program execution\n");
 }
 
 void process_user_input() {
