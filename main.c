@@ -25,7 +25,7 @@ void process_user_input() {
     char input[100];
     int num;
     
-    printf("Введите числа через пробел (для завершения введите 'end'):\n");
+    printf("Enter the numbers separated by a space (enter 'end' to complete):\n");
     
     while (1) {
         if (scanf("%s", input) != 1) {
@@ -46,11 +46,11 @@ void process_user_input() {
     save_previous_run(arr, stack->size);
     
     // Сортируем и сохраняем
-    printf("\nИсходный стек:\n");
+    printf("\nSource stack:\n");
     print_stack(stack);
     
     insertion_sort(arr, stack->size);
-    printf("\nОтсортированный массив (прямое включение):\n");
+    printf("\nSorted array (direct inclusion):\n");
     for (int i = 0; i < stack->size; i++) {
         printf("%d ", arr[i]);
     }
@@ -68,7 +68,7 @@ void compare_sorting_methods() {
     int sizes[] = {100, 500, 1000, 5000, 10000, 50000, 100000};
     int num_sizes = sizeof(sizes) / sizeof(sizes[0]);
     
-    printf("Размер | Прямое включение (сек) | Слиянием (сек) | Ускорение\n");
+    printf("Size | Direct Inclusion (sec) | Merge (sec) | Acceleration\n");
         
     for (int i = 0; i < num_sizes; i++) {
         int n = sizes[i];
@@ -111,14 +111,14 @@ int main(int argc, char* argv[]) {
         int* previous = load_previous_run(&n);
         
         if (previous != NULL) {
-            printf("Предыдущий ряд: ");
+            printf("Previous row: ");
             for (int i = 0; i < n; i++) {
                 printf("%d ", previous[i]);
             }
             printf("\n");
             
             insertion_sort(previous, n);
-            printf("Отсортированный ряд: ");
+            printf("Sorted row: ");
             for (int i = 0; i < n; i++) {
                 printf("%d ", previous[i]);
             }
@@ -126,7 +126,7 @@ int main(int argc, char* argv[]) {
             
             free(previous);
         } else {
-            printf("Предыдущий запуск не найден.\n");
+            printf("The previous launch was not found.\n");
         }
         
         return 0;
@@ -141,7 +141,7 @@ int main(int argc, char* argv[]) {
         
         int choice;
         if (scanf("%d", &choice) != 1) {
-            printf("Неверный ввод.\n");
+            printf("Incorrect input.\n");
             while (getchar() != '\n'); // Очистка буфера
             continue;
         }
@@ -154,7 +154,7 @@ int main(int argc, char* argv[]) {
             case 2:
                 {
                     char filename[100];
-                    printf("Введите имя файла: ");
+                    printf("Enter the file name: ");
                     scanf("%s", filename);
                     
                     int n;
@@ -162,7 +162,7 @@ int main(int argc, char* argv[]) {
                     
                     if (arr != NULL) {
                         Stack* stack = array_to_stack(arr, n);
-                        printf("Стек из файла:\n");
+                        printf("Stack from a file:\n");
                         print_stack(stack);
                         
                         insertion_sort(arr, n);
@@ -177,7 +177,7 @@ int main(int argc, char* argv[]) {
                 
             case 3:
                 generate_test_files();
-                printf("Тестовые файлы сгенерированы в папке test_files/\n");
+                printf("The test files are generated in the folder test_files/\n");
                 break;
                 
             case 4:
@@ -189,16 +189,15 @@ int main(int argc, char* argv[]) {
                 break;
                 
             default:
-                printf("Неверный выбор. Попробуйте снова.\n");
+                printf("Wrong choice. Try again.\n");
         }
         
         if (repeat && choice != 5) {
-            printf("\nНажмите Enter для продолжения...");
+            printf("\nPress Enter to continue");
             getchar();
             getchar();
         }
     }
     
-    printf("Программа завершена.\n");
     return 0;
 }
