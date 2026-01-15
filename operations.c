@@ -12,7 +12,7 @@
 int* read_array_from_file(const char* filename, int* n) {
     FILE* file = fopen(filename, "r");
     if (file == NULL) {
-        printf("Ошибка открытия файла: %s\n", filename);
+        printf("File opening error: %s\n", filename);
         *n = 0;
         return NULL;
     }
@@ -45,7 +45,7 @@ int* read_array_from_file(const char* filename, int* n) {
 void write_array_to_file(const char* filename, int* arr, int n) {
     FILE* file = fopen(filename, "w");
     if (file == NULL) {
-        printf("Ошибка создания файла: %s\n", filename);
+        printf("File creation error: %s\n", filename);
         return;
     }
     
@@ -54,13 +54,13 @@ void write_array_to_file(const char* filename, int* arr, int n) {
     }
     
     fclose(file);
-    printf("Массив записан в файл: %s\n", filename);
+    printf("The array is written to a file: %s\n", filename);
 }
 
 void save_previous_run(int* arr, int n) {
     FILE* file = fopen("previous_run.txt", "w");
     if (file == NULL) {
-        printf("Ошибка сохранения предыдущего запуска\n");
+        printf("Error saving the previous launch\n");
         return;
     }
     
@@ -102,7 +102,7 @@ void generate_test_files() {
         
         FILE* file = fopen(filename, "w");
         if (file == NULL) {
-            printf("Не удалось создать файл: %s\n", filename);
+            printf("Failed to create a file: %s\n", filename);
             continue;
         }
         
