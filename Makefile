@@ -1,6 +1,8 @@
-.PHONY: all clean install uninstall
+CC = gcc
 
-all: lab3
+.PHONY: all clean run install uninstall
+
+all: a.exe
 
 clean:
 	rm -rf lab3 *.o
@@ -14,6 +16,10 @@ operations.o: operations.c
 	gcc -c -o operations.o operations.c
 lab3: main.o stack.o sort.o operations.o
 	gcc -o lab3 main.o stack.o sort.o operations.o
+
+run:
+	./a.exe
+
 install:
 	install ./lab3 /usr/local/bin
 uninstall:
