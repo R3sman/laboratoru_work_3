@@ -96,7 +96,7 @@ void compare_sorting_methods() {
         end = clock();
         double merge_time = ((double)(end - start)) / CLOCKS_PER_SEC;
         
-        printf("%6d | %21.6f | %14.6f | %.2fx\n", 
+        printf("%5d | %21.5f | %14.5f | %.2fx\n", 
                n, insertion_time, merge_time, insertion_time / merge_time);
         
         free(arr);
