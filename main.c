@@ -64,14 +64,12 @@ void process_user_input() {
 }
 
 void compare_sorting_methods() {
-    printf("\n=== Сравнение методов сортировки ===\n");
     
     int sizes[] = {100, 500, 1000, 5000, 10000, 50000, 100000};
     int num_sizes = sizeof(sizes) / sizeof(sizes[0]);
     
     printf("Размер | Прямое включение (сек) | Слиянием (сек) | Ускорение\n");
-    printf("------------------------------------------------------------\n");
-    
+        
     for (int i = 0; i < num_sizes; i++) {
         int n = sizes[i];
         int* arr = malloc(n * sizeof(int));
@@ -104,11 +102,6 @@ void compare_sorting_methods() {
         free(arr);
         free(arr_copy);
     }
-    
-    printf("\nДля построения графика используйте данные из таблицы.\n");
-    printf("Рекомендуется использовать Python с matplotlib:\n");
-    printf("import matplotlib.pyplot as plt\n");
-    printf("# Используйте данные из таблицы выше\n");
 }
 
 int main(int argc, char* argv[]) {
