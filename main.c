@@ -193,7 +193,7 @@ int main(int argc, char* argv[]) {
         }
         
         if (repeat && choice != 5) {
-            printf("\nPress Enter to continue");
+            printf("\nPress Enter to continue\n");
             getchar();
             getchar();
         }
