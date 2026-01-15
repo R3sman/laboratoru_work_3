@@ -53,7 +53,7 @@ void clear_stack(Stack* stack) {
 
 void print_stack(Stack* stack) {
     if (is_empty(stack)) {
-        printf("Стек пуст\n");
+        printf("The stack is empty\n");
         return;
     }
     
@@ -61,7 +61,7 @@ void print_stack(Stack* stack) {
     Stack* temp = create_stack();
     StackNode* current = stack->top;
     
-    printf("Стек (сверху вниз): ");
+    printf("Stack (top to bottom): ");
     while (current != NULL) {
         printf("%d ", current->data);
         push(temp, current->data);
